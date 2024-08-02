@@ -12,7 +12,20 @@
           "package_name": "com.example.youtube_clone"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "144905320810-qcfu3ni61herule2l5sjhm14vv8ofqo3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.youtube_clone",
+            "certificate_hash": "bf6a291b0c0284cac6ed5466fc173cddb49c58b1"
+          }
+        },
+        {
+          "client_id": "144905320810-rvrhqtb891tisgjnlor8f2gsdt212rvq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBnoGrdtLySFOBpJtRhIHjAsAXjnk3ybRg"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "144905320810-rvrhqtb891tisgjnlor8f2gsdt212rvq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "144905320810-stoavp5h1t7u03eicn3q1del3tlr0t8n.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.youtubeClone"
+              }
+            }
+          ]
         }
       }
     }

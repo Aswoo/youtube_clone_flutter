@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:youtube_clone/features/auth/repository/auth_service.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends ConsumerWidget {
   const LoginPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,WidgetRef ref) {
     return Scaffold(
         backgroundColor: Colors.grey,
         body: SafeArea(
@@ -18,7 +20,7 @@ class LoginPage extends StatelessWidget {
                           bottom: 25,
                         )),
                     Image.asset(
-                      "assets/image/youtube-signin.jpg", height: 150,),
+                      "assets/images/youtube-signin.jpg", height: 150,),
                     const Text("Welcom to Youtube",
                       style: TextStyle(
                           fontSize: 38,
@@ -28,14 +30,16 @@ class LoginPage extends StatelessWidget {
                     const Spacer(),
                     Padding(padding: const EdgeInsets.only(bottom: 55),
                       child: GestureDetector(
-                        onTap: {},
+                        onTap: () {
+                          ref.read(authServiceProvider).signInWithGoogle();
+                        },
                         child: Image.asset(
-                          "assets/image/signinwithgoogle.png", height: 60,),
+                          "assets/images/signinwithgoogle.png", height: 60,),
                       ),),
                   ],
                 )
             )
         )
-    )
+    );
   }
 }
