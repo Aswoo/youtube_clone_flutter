@@ -1,3 +1,5 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first, prefer_const_constructors, prefer_const_literals_to_create_immutables
+
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -11,10 +13,12 @@ import 'package:youtube_clone/cores/screens/loader.dart';
 import 'package:youtube_clone/cores/widgets/flat_button.dart';
 import 'package:youtube_clone/features/auth/model/user_model.dart';
 import 'package:youtube_clone/features/auth/provider/user_provider.dart';
-import 'package:youtube_clone/features/content/Long_video/parts/post.dart';
-import 'package:youtube_clone/features/content/Long_video/widgets/video_externel_buttons.dart';
-import 'package:youtube_clone/features/content/Long_video/widgets/video_first_comment.dart';
-import 'package:youtube_clone/features/content/comments/comment_provider.dart';
+import 'package:youtube_clone/features/channel/user_channel/search_repository.dart';
+import 'package:youtube_clone/features/content/long_video/parts/post.dart';
+import 'package:youtube_clone/features/content/long_video/widgets/video_externel_buttons.dart';
+import 'package:youtube_clone/features/content/long_video/widgets/video_first_comment.dart';
+import 'package:youtube_clone/features/content/comment/comment_provider.dart';
+import 'package:youtube_clone/features/content/comment/comment_sheet.dart';
 import 'package:youtube_clone/features/upload/comments/comment_model.dart';
 import 'package:youtube_clone/features/upload/long_video/video_model.dart';
 import 'package:youtube_clone/features/upload/long_video/video_repository.dart';
@@ -277,14 +281,14 @@ class _VideoState extends ConsumerState<Video> {
                         text: "Subscribe",
                         onPressed: () async {
                           // subscribe channel
-                          // await ref
-                          //     .watch(subscribeChannelProvider)
-                          //     .subscribeChannel(
-                          //   userId: user.value!.userId,
-                          //   currentUserId:
-                          //   FirebaseAuth.instance.currentUser!.uid,
-                          //   subscriptions: user.value!.subscriptions,
-                          // );
+                          await ref
+                              .watch(subscribeChannelProvider)
+                              .subscribeChannel(
+                            userId: user.value!.userId,
+                            currentUserId:
+                            FirebaseAuth.instance.currentUser!.uid,
+                            subscriptions: user.value!.subscriptions,
+                          );
                         },
                         colour: Colors.black,
                       ),
@@ -367,11 +371,9 @@ class _VideoState extends ConsumerState<Video> {
                 onTap: () {
                   showModalBottomSheet(
                     context: context,
-                    builder: (context) => Placeholder()
-                      /*
-                      * CommentSheet(
+                    builder: (context) => CommentSheet(
                       video: widget.video,
-                    ),*/
+                    ),
                   );
                 },
                 child: Container(
@@ -397,12 +399,10 @@ class _VideoState extends ConsumerState<Video> {
                         );
                       }
 
-                      return Placeholder();
-                      /*
-                      * VideoFirstComment(
+                      return VideoFirstComment(
                         comments: comments.value!,
                         user: user.value!,
-                      )*/
+                      );
                     },
                   ),
                 ),
